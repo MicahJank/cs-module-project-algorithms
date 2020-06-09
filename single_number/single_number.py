@@ -47,4 +47,6 @@ The space complexity is at O(1) in the current implementation i believe because 
 amount of space regardless of how big arr is
 
 I could try to do this recursively and see how to make it work
+
+since i am using a sort first i am not doing it in 1 pass i dont think? - how could i accomplish this without doing the sort first then?
 '''
