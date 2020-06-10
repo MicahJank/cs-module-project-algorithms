@@ -13,13 +13,31 @@ PLAN
 - do a double loop and multiply all the items in the list together
 - after multiplying all items together divide it by the number at the current index
 - assign that new number to the index in the arr
+- 
 -return the arr
+
+UPDATE
+- loop through the array twice and assign the value of all the numbers multiplied together to a new array
+- then you loop through the new array and divide each value in the array by its corresponding value in the first array
+- assign the new value to the position at that index
+
+TODO - cant figure this out will need to come back to it
 '''
 def product_of_all_other_numbers(arr):
+    new_arr = arr.copy()
     for i in range(len(arr)):
-        for num in arr:
-            if arr[i] != num:
-                
+        for j in range(len(new_arr)):
+            if i != j:
+                new_arr[i] *= arr[j]
+
+    print(new_arr)
+    for i in range(len(arr)):
+        if new_arr[i] == 0:
+            arr[i] = 0
+        else:
+            arr[i] = new_arr[i] // arr[i]
+
+    return arr
                 
 
 
