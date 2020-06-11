@@ -13,29 +13,33 @@ UNDERSTAND
 
 PLAN
 - if n represents the length of the list essentially that means i will need to recurse n times
-- which means the base case would be when my counter reaches below 0 - ie there are no more cookies to eat
+- which means the base case would be when my counter reaches 0 - ie there are no more cookies to eat
 - 
 '''
-def eating_cookies(n):
+def eating_cookies(n, cache):
+
     iterations = 0
     # what happens if there is only 1 item
     if n == 0:
-        # i can return 1 because once n becomes 0 that means we have iterated through the cookies one time
+        # i can return 1 because once n becomes 0 that means we have iterated through the cookies once fully
         # 1 then will get added to the iterations at the next level up of the recursion tree
         return 1
     
     if n >= 1:
         cookies_left = n - 1
+        cache[n] = 1
         iterations += eating_cookies(cookies_left)
 
     if n >= 2:
         cookies_left = n - 2
+        cache[n] = 2
         iterations += eating_cookies(cookies_left)
 
     # if there are more than 3 cookies he has the ability to eat 3 cookies
     if n >= 3:
         # subtract the cookies he has eaten from the jar and then use recursion to check the cookie jar again
         cookies_left = n - 3
+        cache[n] = 3
         iterations += eating_cookies(cookies_left)
 
     # the number of possible combinations
