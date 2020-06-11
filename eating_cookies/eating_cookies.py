@@ -16,15 +16,49 @@ PLAN
 - which means the base case would be when my counter reaches 0 - ie there are no more cookies to eat
 - 
 '''
-def eating_cookies(n, cache):
+# def eating_cookies(n, cache):
+#     print("cache", cache)
+#     iterations = 0
+#     # what happens if there is only 1 item
+#     if n == 0:
+#         # i can return 1 because once n becomes 0 that means we have iterated through the cookies once fully
+#         # 1 then will get added to the iterations at the next level up of the recursion tree
+#         return 1
+    
+#     if n >= 1:
+#         cookies_left = n - 1
+#         cache[n-1] = 1
+#         iterations += eating_cookies(cookies_left, cache)
 
+#     if n >= 2:
+#         cookies_left = n - 2
+#         cache[n-1] = 2
+#         iterations += eating_cookies(cookies_left, cache)
+
+#     # if there are more than 3 cookies he has the ability to eat 3 cookies
+#     if n >= 3:
+#         # subtract the cookies he has eaten from the jar and then use recursion to check the cookie jar again
+#         cookies_left = n - 3
+#         cache[n-1] = 3
+#         iterations += eating_cookies(cookies_left, cache)
+
+    
+
+#     # the number of possible combinations
+#     return iterations
+
+
+# SECOND PASS 
+def eating_cookies(n, cache):
+    print("cache", cache)
     iterations = 0
+
     # what happens if there is only 1 item
     if n == 0:
         # i can return 1 because once n becomes 0 that means we have iterated through the cookies once fully
         # 1 then will get added to the iterations at the next level up of the recursion tree
         return 1
-    
+        
     if n >= 1:
         cookies_left = n - 1
         cache[n-1] = 1
@@ -42,15 +76,26 @@ def eating_cookies(n, cache):
         cache[n-1] = 3
         iterations += eating_cookies(cookies_left, cache)
 
-    print("cache", cache)
-
-    # the number of possible combinations
+    # the number of possible combinations    
     return iterations
 
+# Your code here
+# def eating_cookies(n, cache=None):
+#     print(cache)
+#     if cache == None:
+# 	    cache = [0] * (n + 1)   
+#     if n <= 1:
+# 	    cache[n] = 1
+#     elif n == 2:
+#     	cache[n] = 2
+#     elif cache[n] == 0:
+#     	cache[n] = eating_cookies(n - 1, cache) + eating_cookies(n - 2, cache) + eating_cookies(n - 3, cache)
+        
+#     return cache[n]
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
     num_cookies = 6
-    cache = [0 for _ in range(num_cookies + 1)]
+    cache = [0 for _ in range(num_cookies)]
 
     print(f"There are {eating_cookies(num_cookies, cache)} ways for Cookie Monster to eat {num_cookies} cookies")

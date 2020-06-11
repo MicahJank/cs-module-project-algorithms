@@ -34,26 +34,51 @@ PLAN
 '''
 
 # EXECUTE
+# def sliding_window_max(nums, k):
+#     max_values = []
+#     k_start = 0
+#     k_end = k-1
+
+#     while k_end != len(nums):
+
+#         max_value = nums[k_start]
+#         for i in range(k_start, k_end+1):
+#             if nums[i] > max_value:
+#                 max_value = nums[i]
+#             # print(nums[i])
+
+#         max_values.append(max_value)
+
+#         k_end += 1
+#         k_start += 1
+
+#     return max_values
+
+# SECOND PASS
 def sliding_window_max(nums, k):
     max_values = []
     k_start = 0
     k_end = k-1
 
-    while k_end != len(nums):
+    k_counter = k
 
-        max_value = nums[k_start]
-        for i in range(k_start, k_end+1):
-            if nums[i] > max_value:
-                max_value = nums[i]
-            # print(nums[i])
+    
 
-        max_values.append(max_value)
 
-        k_end += 1
-        k_start += 1
+    # while k_end != len(nums):
+
+    #     max_value = nums[k_start]
+    #     for i in range(k_start, k_end+1):
+    #         if nums[i] > max_value:
+    #             max_value = nums[i]
+    #         # print(nums[i])
+
+    #     max_values.append(max_value)
+
+    #     k_end += 1
+    #     k_start += 1
 
     return max_values
-
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation 
