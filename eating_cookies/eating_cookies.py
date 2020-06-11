@@ -27,20 +27,22 @@ def eating_cookies(n, cache):
     
     if n >= 1:
         cookies_left = n - 1
-        cache[n] = 1
-        iterations += eating_cookies(cookies_left)
+        cache[n-1] = 1
+        iterations += eating_cookies(cookies_left, cache)
 
     if n >= 2:
         cookies_left = n - 2
-        cache[n] = 2
-        iterations += eating_cookies(cookies_left)
+        cache[n-1] = 2
+        iterations += eating_cookies(cookies_left, cache)
 
     # if there are more than 3 cookies he has the ability to eat 3 cookies
     if n >= 3:
         # subtract the cookies he has eaten from the jar and then use recursion to check the cookie jar again
         cookies_left = n - 3
-        cache[n] = 3
-        iterations += eating_cookies(cookies_left)
+        cache[n-1] = 3
+        iterations += eating_cookies(cookies_left, cache)
+
+    print("cache", cache)
 
     # the number of possible combinations
     return iterations
@@ -48,6 +50,7 @@ def eating_cookies(n, cache):
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
-    num_cookies = 10
+    num_cookies = 6
+    cache = [0 for _ in range(num_cookies + 1)]
 
-    print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to eat {num_cookies} cookies")
+    print(f"There are {eating_cookies(num_cookies, cache)} ways for Cookie Monster to eat {num_cookies} cookies")
