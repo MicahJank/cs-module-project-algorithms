@@ -20,20 +20,39 @@ PLAN
 '''
 
 # EXECUTE
+# def moving_zeroes(arr):
+#     mutated_array = []
+#     zeros = []
+
+#     for num in arr:
+#         if num != 0:
+#             mutated_array.append(num)
+#         else:
+#             zeros.append(num)
+
+#     mutated_array.extend(zeros)
+
+#     return mutated_array
+
+# SECOND PASS
+# time complexity i think is now O(n) at the worse case - generally it should be lower, the only time it would be O(n) is 
+#  when there are no zeroes in the array
+# space complexity is O(1)
 def moving_zeroes(arr):
-    mutated_array = []
-    zeros = []
+    end_pointer = len(arr)-1
+    start_pointer = 0
+    while start_pointer < end_pointer:
+        if arr[end_pointer] == 0:
+            end_pointer -= 1
 
-    for num in arr:
-        if num != 0:
-            mutated_array.append(num)
-        else:
-            zeros.append(num)
+        if arr[start_pointer] == 0:
+            arr[start_pointer], arr[end_pointer] = arr[end_pointer], arr[start_pointer]
+            end_pointer -= 1
 
-    mutated_array.extend(zeros)
+        start_pointer += 1
+        # print("array status: ", arr)
 
-    return mutated_array
-
+    return arr
 
 if __name__ == '__main__':
     # Use the main function here to test out your implementation
