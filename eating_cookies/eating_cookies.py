@@ -48,8 +48,6 @@ PLAN
 
 # SECOND PASS 
 def eating_cookies(n, cache={}):
-    
-    # 
     if n in cache:
         return cache[n]
 
