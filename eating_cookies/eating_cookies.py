@@ -1,14 +1,74 @@
 '''
 Input: an integer
 Returns: an integer
-'''
-def eating_cookies(n):
-    # Your code here
 
-    pass
+Cookie Monster can eat either 1, 2, or 3 cookies at a time. If he were given a jar of cookies with n cookies inside of it, 
+how many ways could he eat all n cookies in the cookie jar? Implement a function eating_cookies that counts the number of 
+possible ways Cookie Monster can eat all of the cookies in the jar.
+
+UNDERSTAND
+- n is a number that represents how many cookies are in the jar
+
+- 
+
+PLAN
+- if n represents the length of the list essentially that means i will need to recurse n times
+- which means the base case would be when my counter reaches 0 - ie there are no more cookies to eat
+- 
+'''
+# def eating_cookies(n, cache={}):
+#     print("cache", cache)
+#     iterations = 0
+#     # what happens if there is only 1 item
+#     if n == 0:
+#         # i can return 1 because once n becomes 0 that means we have iterated through the cookies once fully
+#         # 1 then will get added to the iterations at the next level up of the recursion tree
+#         return 1
+    
+#     if n >= 1:
+#         cookies_left = n - 1
+#         cache[n-1] = 1
+#         iterations += eating_cookies(cookies_left, cache)
+
+#     if n >= 2:
+#         cookies_left = n - 2
+#         cache[n-1] = 2
+#         iterations += eating_cookies(cookies_left, cache)
+
+#     # if there are more than 3 cookies he has the ability to eat 3 cookies
+#     if n >= 3:
+#         # subtract the cookies he has eaten from the jar and then use recursion to check the cookie jar again
+#         cookies_left = n - 3
+#         cache[n-1] = 3
+#         iterations += eating_cookies(cookies_left, cache)
+
+#     # the number of possible combinations
+#     return iterations
+
+
+# SECOND PASS 
+def eating_cookies(n, cache={}):
+    if n in cache:
+        return cache[n]
+
+    if n == 0:
+        cache[n] = 1
+        return cache[n]
+
+    if n < 0:
+        cache[n] = 0
+        return cache[n]
+        
+    else:
+        cache[n] = eating_cookies(n - 1) + eating_cookies(n - 2) + eating_cookies(n - 3)
+        print(cache)
+        return cache[n]
+
+    return cache[n]
 
 if __name__ == "__main__":
     # Use the main function here to test out your implementation
-    num_cookies = 5
+    num_cookies = 7
+    cache = [0 for _ in range(num_cookies)]
 
-    print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to each {num_cookies} cookies")
+    print(f"There are {eating_cookies(num_cookies)} ways for Cookie Monster to eat {num_cookies} cookies")
